@@ -40,7 +40,16 @@ namespace Praktika
                 identificators.Add(user.Id.ToString());
             }
 
+            var get = api.Wall.Get(new WallGetParams
+            { OwnerId = Convert.ToInt64(identificators[0]),
+            Count = 1
+            });
 
+            get.WallPosts.
+            var post = _api.Wall.Post(new WallPostParams
+            {
+
+            });
         }
     }
 }
