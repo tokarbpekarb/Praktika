@@ -43,6 +43,26 @@ namespace Praktika
             f3.Show();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            token = textBox1.Text;
+
+            try
+            {
+                api.Authorize(new ApiAuthParams
+                {
+                    AccessToken = token
+                });
+            }
+            catch (Exception k)
+            {
+                MessageBox.Show(k.Message);
+            }
+
+            AddTask T = new AddTask(api);
+            T.ShowDialog();
+        }
+
         //static void Auth(string token)
         //{
         //    var api = new VkApi();
