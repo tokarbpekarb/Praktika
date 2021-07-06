@@ -32,6 +32,7 @@ namespace Praktika
                 
         });
             int sum = 0;
+            int count = 0;
             foreach (User user in getFriends)
             {
                 if (user.BirthDate != null)
@@ -43,11 +44,12 @@ namespace Praktika
                         i = user.BirthDate.IndexOf('.', i + 1);
                         int userData = Convert.ToInt32(user.BirthDate.Substring(i+1));
                         sum += today - userData;
+                        count++;
                     }
                 }
                 
             }
-            sum /= getFriends.Count;
+            sum /= count;
             textBox1.Text = sum.ToString();
         }
     }
