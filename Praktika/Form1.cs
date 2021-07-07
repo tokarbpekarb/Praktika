@@ -110,7 +110,7 @@ namespace Praktika
                         //button1.Text = userData;
                         if (today == userData)
                         {
-                            string FL = Encoding.UTF8.GetString(Encoding.Default.GetBytes(user.FirstName+" " + user.LastName)); Не обращайте внимания на эту строку.
+                            string FL = Encoding.UTF8.GetString(Encoding.Default.GetBytes(user.FirstName+" " + user.LastName)); 
                             
                             Post(api, FL);
                         }
