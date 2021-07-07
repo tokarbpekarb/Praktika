@@ -144,6 +144,25 @@ namespace Praktika
             
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            token = textBox1.Text;
+
+            try
+            {
+                api.Authorize(new ApiAuthParams
+                {
+                    AccessToken = token
+                });
+            }
+            catch (Exception k)
+            {
+                MessageBox.Show(k.Message);
+                return;
+            }
+            Form4 f4 = new Form4(api);
+            f4.Show();
+        }
     }
     
         //static void Auth(string token)

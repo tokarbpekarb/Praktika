@@ -30,26 +30,39 @@ namespace Praktika
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(224, 225);
+            this.button1.Location = new System.Drawing.Point(135, 80);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(273, 83);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Сделать репост записей в паблик";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(548, 56);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Программа берет одну запись со стены каждого из участников группы и репостит ее н" +
+    "а стену группы";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(548, 197);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Form4";
-            this.Text = "Form4";
+            this.Text = "Задание 3";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
 
@@ -58,5 +71,6 @@ namespace Praktika
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

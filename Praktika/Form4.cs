@@ -15,7 +15,8 @@ namespace Praktika
 {
     public partial class Form4 : Form
     {
-        List<string> identificators= new List<string>();
+        long GroupId = 204431804;
+        List<long> identificators= new List<long>();
         VkApi api;
         public Form4(VkApi api)
         {
@@ -25,31 +26,44 @@ namespace Praktika
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var followers = api.Groups.GetMembers(new GroupsGetMembersParams()
+            {
+                GroupId = GroupId.ToString(),
+                Fields = VkNet.Enums.Filters.UsersFields.FirstNameAbl
+            });
+            foreach (User user in followers)
+            {
+                identificators.Add(Convert.ToInt64(user.Id));
+            }
 
+            string post_id = null;
+            foreach (long id in identificators)
+            {
+                post_id = "wall" + id.ToString() + "_";
+                var userPosts = api.Wall.Get(new WallGetParams
+                {
+                    OwnerId = id,
+                    Count = 1
+                });
+
+                try
+                {
+                    post_id += userPosts.WallPosts[0].Id.ToString();
+                }
+                catch(Exception k)
+                {
+                    MessageBox.Show(k.Message, "Ошибка");
+                }
+
+                var repost = api.Wall.Repost(post_id, "test", GroupId ,false);
+            }
         }
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            var getFollowers = api.Groups.GetMembers(new GroupsGetMembersParams()
-            {
-                GroupId = "205575031",
-                Fields = VkNet.Enums.Filters.UsersFields.FirstNameAbl
-            });
-            foreach (User user in getFollowers)
-            {
-                identificators.Add(user.Id.ToString());
-            }
 
-            var get = api.Wall.Get(new WallGetParams
-            { OwnerId = Convert.ToInt64(identificators[0]),
-            Count = 1
-            });
-
-            get.WallPosts.
-            var post = _api.Wall.Post(new WallPostParams
-            {
-
-            });
         }
+
+        
     }
 }
