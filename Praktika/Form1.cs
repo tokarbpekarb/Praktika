@@ -30,7 +30,6 @@ namespace Praktika
         {
             
             InitializeComponent();
-            button1.Text = today;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -95,9 +94,11 @@ namespace Praktika
                 Fields = VkNet.Enums.Filters.UsersFields.BirthDate
                 
         }) ;
+
             
+
             foreach (User user in getFollowers)
-            {
+                {
                 if (user.BirthDate != null)
                 {
                     int dotNumber = user.BirthDate.Where(c => c == '.').Count();
@@ -109,33 +110,40 @@ namespace Praktika
                         //button1.Text = userData;
                         if (today == userData)
                         {
-                            button1.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(user.FirstName+user.LastName));
+                            string FL = Encoding.UTF8.GetString(Encoding.Default.GetBytes(user.FirstName+" " + user.LastName)); Не обращайте внимания на эту строку.
+                            
+                            Post(api, FL);
                         }
+                        
                     }
                 }
+               
 
             }
-            Post(api, "");
 
-
+            
         }
         
-        
+       
         static void Post(VkApi api, string userName)
         {
             
-            PhotoAlbum al = new PhotoAlbum();
-            al.Id = 0;
-            
             api.Wall.Post(new WallPostParams
+
+            
             {
-                OwnerId = -205575031,
-                Message = "Test post from 6th group. Work, you",
-                //Attachments = new List<MediaAttachment>(new Photo { "photo539310031_457256583" })
-
-
-            }) ;
+                Message = $"C днём рождения, {userName}! Это прекрасный день, который означает, что ты возможно становишься мудрее, сталкиваясь с теми или иными препятствиями, а также находишь новые пути решения тех или иных проблем. Желаем тебе удачи во всех твоих начинаниях и успехов в делах. ",
+                OwnerId = -205575031
+            });
         }
+        
+        static void Repost(VkApi api, string wall)
+        {
+
+            api.Wall.Repost("wall539310031_24", "Repost test with Id found.", 205575031, false);
+            
+        }
+
     }
     
         //static void Auth(string token)
