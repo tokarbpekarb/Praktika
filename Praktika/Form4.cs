@@ -57,6 +57,8 @@ namespace Praktika
 
                 var repost = api.Wall.Repost(post_id, "test", GroupId ,false);
             }
+
+            MessageBox.Show("Успешно!", "Задание 3", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Form4_Load(object sender, EventArgs e)

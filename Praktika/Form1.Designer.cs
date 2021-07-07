@@ -35,6 +35,7 @@ namespace Praktika
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -50,17 +51,18 @@ namespace Praktika
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(163, 60);
+            this.textBox1.Location = new System.Drawing.Point(117, 60);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(425, 22);
+            this.textBox1.Size = new System.Drawing.Size(302, 22);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(45, 50);
+            this.label1.Location = new System.Drawing.Point(12, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 32);
             this.label1.TabIndex = 3;
@@ -99,11 +101,22 @@ namespace Praktika
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(446, 55);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(135, 33);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Войти";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(619, 238);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -126,6 +139,7 @@ namespace Praktika
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

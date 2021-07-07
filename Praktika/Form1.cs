@@ -34,68 +34,24 @@ namespace Praktika
 
         private void button1_Click(object sender, EventArgs e)
         {
-            token = textBox1.Text;
-
-            try
-            {
-                api.Authorize(new ApiAuthParams
-                {
-                    AccessToken = token
-                }) ;
-            }
-            catch(Exception k)
-            {
-                MessageBox.Show(k.Message);
-            }
-
             Form3 f3 = new Form3(api);
-            f3.Show();
+            f3.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            token = textBox1.Text;
-
-            try
-            {
-                api.Authorize(new ApiAuthParams
-                {
-                    AccessToken = token
-                });
-            }
-            catch (Exception k)
-            {
-                MessageBox.Show(k.Message);
-            }
-
             AddTask T = new AddTask(api);
             T.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            token = textBox1.Text;
-
-            try
-            {
-                api.Authorize(new ApiAuthParams
-                {
-                    AccessToken = token
-                });
-            }
-            catch (Exception k)
-            {
-                MessageBox.Show(k.Message);
-                return;
-            }
             var getFollowers = api.Groups.GetMembers(new VkNet.Model.RequestParams.GroupsGetMembersParams
             {
                 GroupId = "205575031",
                 Fields = VkNet.Enums.Filters.UsersFields.BirthDate
                 
-        }) ;
-
-            
+            }) ;
 
             foreach (User user in getFollowers)
                 {
@@ -146,32 +102,39 @@ namespace Praktika
 
         private void button3_Click(object sender, EventArgs e)
         {
-            token = textBox1.Text;
+            Form4 f4 = new Form4(api);
+            f4.Show();
+        }
 
+        private void Authorize()
+        {
             try
             {
                 api.Authorize(new ApiAuthParams
                 {
-                    AccessToken = token
-                });
+                    AccessToken = textBox1.Text
+                }) ;
             }
             catch (Exception k)
             {
                 MessageBox.Show(k.Message);
                 return;
             }
-            Form4 f4 = new Form4(api);
-            f4.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Authorize();
+            button5.Text = api.UserId.ToString();
+            button5.ForeColor = Color.White;
+            button5.BackColor = Color.LightGreen;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            button5.Text = "Войти";
+            button5.BackColor = Color.Transparent;
+            button5.ForeColor = Color.Black;
         }
     }
-    
-        //static void Auth(string token)
-        //{
-        //    var api = new VkApi();
-
-        //    api.Authorize(new ApiAuthParams
-        //    {
-        //        AccessToken = token
-        //    }) ;
-        //}
 }
