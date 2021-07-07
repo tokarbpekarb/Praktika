@@ -125,7 +125,11 @@ namespace Praktika
         private void button5_Click(object sender, EventArgs e)
         {
             Authorize();
-            button5.Text = api.UserId.ToString();
+            //var p = api.Users.Get(new long[] {api.UserId}).FirstOrDefault();
+            //if (p == null)
+            //    return;
+            //button5.Text = p.FirstName + " " + p.LastName;
+            button5.Text = "УСПЕШНО" ;
             button5.ForeColor = Color.White;
             button5.BackColor = Color.LightGreen;
         }
