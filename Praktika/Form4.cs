@@ -33,7 +33,7 @@ namespace Praktika
             });
             foreach (User user in followers)
             {
-                identificators.Add(Convert.ToInt64(user.Id));
+                identificators.Add(user.Id));
             }
 
             string post_id = null;
